@@ -1,11 +1,11 @@
-// ---------- Constants ----------
+
 const STORAGE_KEY = "expenseTracker.transactions";
 
-// ---------- State ----------
+
 let transactions = loadTransactions();
 let categoryChart = null;
 
-// ---------- DOM References ----------
+
 const form = document.getElementById("transactionForm");
 const labelInput = document.getElementById("label");
 const amountInput = document.getElementById("amount");
@@ -26,7 +26,7 @@ const exportBtn = document.getElementById("exportBtn");
 const chartEmptyStateEl = document.getElementById("chartEmptyState");
 const chartCanvas = document.getElementById("categoryChart");
 
-// ---------- Persistence ----------
+
 function loadTransactions() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -45,7 +45,7 @@ function saveTransactions() {
   }
 }
 
-// ---------- Helpers ----------
+
 function formatCurrency(value) {
   const sign = value < 0 ? "-" : "";
   return `${sign}₹${Math.abs(value).toFixed(2)}`;
@@ -64,7 +64,7 @@ function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
 }
 
-// ---------- Filtering ----------
+
 function isWithinThisWeek(dateStr) {
   const date = new Date(dateStr);
   const now = new Date();
@@ -96,7 +96,7 @@ function getFilteredTransactions() {
     });
 }
 
-// ---------- Rendering ----------
+
 function renderSummary() {
   const totals = transactions.reduce(
     (acc, tx) => {
